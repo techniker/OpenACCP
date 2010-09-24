@@ -1,0 +1,82 @@
+
+
+#include "OLED_Driver.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+#include <avr/eeprom.h>
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+
+
+#define		TXenable				0x08
+#define		ClockOut_PD4_enable		0x10
+#define		DCandRESET_enable		0x06
+#define		DC_low					(PORTC &= 0xFD)
+#define		DC_high					(PORTC |= 0x02)
+#define		RESET_low				(PORTC &= 0xFB)
+#define		RESET_high				(PORTC |= 0x04)
+#define		CS_enable				0x02
+#define		CS_low					(PORTB &= 0xFD)
+#define		CS_high					(PORTB |= 0x02)
+#define		BaudrateOff				0x00
+#define		Baudrate244				0x0800
+
+
+
+int main (void)
+{
+
+	General_Init();
+	SPI_Init();
+	OLED_Init();
+	while(1);
+
+}
+
+void General_Init()
+{
+	DDRC	=	DCandRESET_enable;
+	RESET_high;
+	DDRB	=	CS_enable;
+	CS_high;
+		
+}
+
+
+
+void SPI_Init()
+{
+	UBRR0 	= 	BaudrateOff;
+
+	DDRD 	=  	ClockOut_PD4_enable;
+
+	UCSR0C 	= 	0xC3;				//SPI enable, MSB first, SPI Mode 3
+
+	UCSR0B 	= 	TXenable;
+
+	UBRR0 	=	Baudrate244;
+}
+
+void OLED_Init()
+{
+	RESET_low;
+	
+
+	Send_Command(0xA5);
+	Send_Command(0xAF);
+
+
+		
+	
+}
+
+void Send_Command(unsigned char data)
+{
+	CS_low;
+	DC_low;
+	UDR0 = data;
+	while(!TXC0);
+
+}
