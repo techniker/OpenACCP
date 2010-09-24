@@ -1,0 +1,16 @@
+﻿Über OpenACCP
+==============
+
+OpenACCP steht für OpenAccuCheckCompactPlus und ist eine freie
+Implementation für das Accu Check Compact Plus Blutzuckermessgerät von Roche.
+
+Das Messgerät besitzt ein
+102×80 Pixel incl. 16 Helligkeitsstufen pro Pixel
+SSD1325 Controller gesteuertes Osram Pictiva OLED Display
+(43x36 mm gesamt 31x25 mm aktiv)
+
+und einen
+
+Atmel 168P Mikrocontroller.
+
+
