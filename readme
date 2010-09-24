@@ -1,4 +1,4 @@
-﻿Über OpenACCP
+Über OpenACCP
 ==============
 
 OpenACCP steht für OpenAccuCheckCompactPlus und ist eine freie
@@ -42,4 +42,17 @@ Pinbelegung des AVR mega168 (16kB Flash / 1kB RAM / 512Byte EEPROM):
 32 PD2
 31 PD1 OLED_SDIN
 30 PD0 RXD
+
+------------
+ISP Connector auf dem PCB des Compact Plus (Bads vom Atmega168P gezählt):
+
+-SCK
+-MOSI
+-MISO
+-RST
+-GND
+-Vcc
+
+
+
 
