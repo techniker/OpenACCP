@@ -1,5 +1,5 @@
 # Copyright (c) 2010, Bjoern Heller <tec@hellercom.de>. All rights reserved
-# This code is licensed under GNU/ GP
+# This code is licensed under GNU/ GPl
 
 #include "OLED_Driver.h"
 #include <avr/io.h>
